@@ -147,7 +147,7 @@ func myPowRecursive(_ number1: Int, _ number2: Int) -> Int {
 
 myPowRecursive(2, 4)
 
-//Challenge 19 - Swap two numbers
+//Challenge 19 - Swap two numbers without using a temporary variable
 //My solution
 
 var a = 1
@@ -157,5 +157,57 @@ b = a - b
 a = a - b
 
 (a,b) = (b,a)
+
+//Challenge 20 - find primes
+//My solution
+
+func findPrime(number: Int) -> Bool{
+    guard number > 1 else { return false }
+    
+    for n in 2..<number {
+        if number % n == 0 {
+            return false
+        }
+    }
+
+    return true
+}
+
+
+findPrime(number: 7)
+
+
+//Challenge 21 - Find the lowest and the highest binary number which has the same number of 1s compared to a given number
+//My solution
+
+let number = 28
+
+let binaryStr = String(number, radix: 2)
+let arrayOfOnes = binaryStr.filter { $0 == "1" }
+
+var counterMain = arrayOfOnes.count
+var counterToCompare = 0
+var i = number - 1
+
+while i > 0 {
+    let lowest = String(i, radix: 2).filter { $0 == "1"}
+    counterToCompare = lowest.count
+    if counterToCompare == counterMain {
+        print("The lowest with the same number of 1s is:", i)
+        break
+    }
+    i -= 1
+}
+i = number + 1
+
+while i > number {
+    let highest = String(i, radix: 2).filter { $0 == "1"}
+    counterToCompare = highest.count
+    if counterToCompare == counterMain {
+        print("The highest with the same number of 1s is:", i)
+        break
+    }
+    i += 1
+}
 
 
