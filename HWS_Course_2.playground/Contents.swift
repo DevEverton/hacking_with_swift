@@ -180,7 +180,7 @@ findPrime(number: 7)
 //Challenge 21 - Find the lowest and the highest binary number which has the same number of 1s compared to a given number
 //My solution
 
-let number = 28
+let number = 32
 
 let binaryStr = String(number, radix: 2)
 let arrayOfOnes = binaryStr.filter { $0 == "1" }
@@ -209,5 +209,90 @@ while i > number {
     }
     i += 1
 }
+
+//Challenge 22 - Reverse the binary digits padded to 8 digits and return the new number based on the reversed binary
+//My solution
+
+func challenge22(number: UInt) -> UInt {
+    let binary = String(number, radix: 2)
+    let padding = 8 - binary.count
+    let paddedBinary = String(repeating: "0", count: padding) + binary
+    let reversed = String(paddedBinary.reversed())
+    
+    return strtoul(reversed, nil, 2)
+
+}
+
+challenge22(number: 32)
+
+//Challenge 23 - Return true if a string only conatins numbers
+//My solution
+
+
+
+func challenge23(string: String) -> Bool {
+    let numbers = "1234567890"
+    var boolArr = [Bool]()
+    
+    for element in string {
+        if numbers.contains(element) {
+            boolArr.append(true)
+        }else {
+            boolArr.append(false)
+        }
+    }
+    
+    if boolArr.contains(false) {
+        return false
+    }
+    return true
+}
+
+challenge23(string: "9223372036854775808")
+
+//Challenge 25 - Add numbers inside strings
+//My solution
+
+func addNumberInsideOf(string: String) -> Int {
+    
+    let arrStr = Array(string)
+    var number = "0"
+    var numArray = [Int]()
+    var counter = 0
+    
+    for element in arrStr {
+        if let _ = Int(String(element)) {
+            number.append(element)
+            counter += 1
+            if arrStr.endIndex == counter {
+                numArray.append(Int(String(number))!)
+            }
+        }else {
+            numArray.append(Int(String(number))!)
+            number = "0"
+            counter += 1
+        }
+    }
+    
+    print(numArray)
+
+    return numArray.reduce(0){$0 + $1}
+}
+
+addNumberInsideOf(string: "a10b20d30")
+
+//Challenge 26 - calculate sqrt() function by hand
+//My solution
+
+
+
+
+
+
+
+
+
+
+
 
 
