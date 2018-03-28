@@ -250,7 +250,7 @@ func challenge23(string: String) -> Bool {
 
 challenge23(string: "9223372036854775808")
 
-//Challenge 25 - Add numbers inside strings
+//Challenge 24 - Add numbers inside strings
 //My solution
 
 func addNumberInsideOf(string: String) -> Int {
@@ -281,11 +281,45 @@ func addNumberInsideOf(string: String) -> Int {
 
 addNumberInsideOf(string: "a10b20d30")
 
-//Challenge 26 - calculate sqrt() function by hand
+//Challenge 25 - calculate sqrt() function by hand
 //My solution
 
+func mySqrt(number: Int) -> Int? {
+    guard number > 0 else { return nil }
+    if number == 1 {
+        return 1
+    }
+    var guess = 1.0
+    
+    while Double(number) - guess*guess  > 0.1 {
+        if guess*guess == Double(number) {
+            return Int(guess)
+        }
+        guess += 0.9
+    }
+    return Int(guess)
+}
 
 
+
+mySqrt(number: 16777216)
+
+
+//Challenge 26 - Subtract without use - sign
+//My solution
+
+func subtract( _ x: Int, from y: Int) -> Int {
+    var result = y/2
+    if result + x > y {
+        result = 0
+    }
+    while result + x != y {
+        result += 1
+    }
+    return result
+}
+
+subtract(2, from: 23)
 
 
 
